@@ -28,13 +28,12 @@ export default function InvoiceSubmission() {
 
   return (
     <Layout>
-      <div className='p-6 border-1 border-gray-200 h-full bg-white rounded-2xl shadow-xl'>
+      <div className='p-6 border-1 border-gray-200 h-fit bg-white rounded-2xl shadow-xl'>
         <div className='h-fit flex flex-col justify-between'>
           <h1 className="text-xl font-semibold border-l-sky-500 border-l-8 pl-2.5">Invoice Submission</h1>
           
           <form onSubmit={handleSubmit} className="mt-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <InputField
+          <InputField
                 label="INVOICE NO"
                 id="invoiceNo"
                 name="invoiceNo"
@@ -43,6 +42,8 @@ export default function InvoiceSubmission() {
                 placeholder="Enter invoice number"
                 required
               />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+           
               
               <InputField
                 label="INVOICE DATE"
