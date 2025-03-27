@@ -25,3 +25,20 @@ body {
   border:0;
   padding:0;
 }
+
+.custom-scrollbar2::-webkit-scrollbar {
+  width: 0px;
+}
+
+.custom-scrollbar {
+  overflow: hidden;
+  overflow-y: auto;
+  height: 83.333%;
+  scroll-behavior: smooth;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px;
+}
+
+

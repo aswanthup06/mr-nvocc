@@ -3,96 +3,44 @@ import { useState } from 'react';
 import Layout from '../../components/layout';
 import Modal from '../../components/modal';
 import { TiFilter } from "react-icons/ti";
-import { IoIosArrowBack } from "react-icons/io";
-import { IoIosArrowForward } from "react-icons/io";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { RiArrowGoBackFill } from "react-icons/ri";
 import { FiEdit, FiEye } from "react-icons/fi";
 import { FaCheck } from "react-icons/fa";
-import { MdMoreVert } from "react-icons/md";
 import InputField from '../../components/input-field';
 
 export default function EvaluationTaskList() {
   const dummyData = [
-    { 
-      id: 1, 
-      evaluationTaskId: "ET20230001", 
-      billOfLading: "BL123456789", 
-      containerNumber: "MSKU1234567", 
-      evaluationStatus: "Pending Review", 
-      taskStatus: "In Progress" 
-    },
-    { 
-      id: 2, 
-      evaluationTaskId: "ET20230002", 
-      billOfLading: "BL987654321", 
-      containerNumber: "TGHU7654321", 
-      evaluationStatus: "Approved", 
-      taskStatus: "Completed" 
-    },
-    { 
-      id: 3, 
-      evaluationTaskId: "ET20230003", 
-      billOfLading: "BL567891234", 
-      containerNumber: "CAIU8912345", 
-      evaluationStatus: "Rejected", 
-      taskStatus: "Pending" 
-    },
-    { 
-      id: 4, 
-      evaluationTaskId: "ET20230004", 
-      billOfLading: "BL345678912", 
-      containerNumber: "APHU6789123", 
-      evaluationStatus: "Approved", 
-      taskStatus: "Completed" 
-    },
-    { 
-      id: 5, 
-      evaluationTaskId: "ET20230005", 
-      billOfLading: "BL912345678", 
-      containerNumber: "NYKU2345678", 
-      evaluationStatus: "Pending Review", 
-      taskStatus: "In Progress" 
-    },
-    { 
-      id: 6, 
-      evaluationTaskId: "ET20230006", 
-      billOfLading: "BL678912345", 
-      containerNumber: "HLCU3456789", 
-      evaluationStatus: "Approved", 
-      taskStatus: "Completed" 
-    },
-    { 
-      id: 7, 
-      evaluationTaskId: "ET20230007", 
-      billOfLading: "BL456789123", 
-      containerNumber: "OOCU4567890", 
-      evaluationStatus: "Pending Review", 
-      taskStatus: "In Progress" 
-    },
-    { 
-      id: 8, 
-      evaluationTaskId: "ET20230008", 
-      billOfLading: "BL234567891", 
-      containerNumber: "MSCU5678901", 
-      evaluationStatus: "Rejected", 
-      taskStatus: "Pending" 
-    },
-    { 
-      id: 9, 
-      evaluationTaskId: "ET20230009", 
-      billOfLading: "BL891234567", 
-      containerNumber: "COSU6789012", 
-      evaluationStatus: "Approved", 
-      taskStatus: "Completed" 
-    },
-    { 
-      id: 10, 
-      evaluationTaskId: "ET20230010", 
-      billOfLading: "BL789123456", 
-      containerNumber: "EVEU7890123", 
-      evaluationStatus: "Pending Review", 
-      taskStatus: "In Progress" 
-    },
+    { id: 1, evaluationTaskId: "ET20230001", billOfLading: "BL123456789", containerNumber: "MSKU1234567", evaluationStatus: "Pending Review", taskStatus: "In Progress" },
+    { id: 2, evaluationTaskId: "ET20230002", billOfLading: "BL987654321", containerNumber: "TGHU7654321", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 3, evaluationTaskId: "ET20230003", billOfLading: "BL567891234", containerNumber: "CAIU8912345", evaluationStatus: "Rejected", taskStatus: "Pending" },
+    { id: 4, evaluationTaskId: "ET20230004", billOfLading: "BL345678912", containerNumber: "APHU6789123", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 5, evaluationTaskId: "ET20230005", billOfLading: "BL912345678", containerNumber: "NYKU2345678", evaluationStatus: "Pending Review", taskStatus: "In Progress" },
+    { id: 6, evaluationTaskId: "ET20230006", billOfLading: "BL678912345", containerNumber: "HLCU3456789", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 7, evaluationTaskId: "ET20230007", billOfLading: "BL456789123", containerNumber: "OOCU4567890", evaluationStatus: "Pending Review", taskStatus: "In Progress" },
+    { id: 8, evaluationTaskId: "ET20230008", billOfLading: "BL234567891", containerNumber: "MSCU5678901", evaluationStatus: "Rejected", taskStatus: "Pending" },
+    { id: 9, evaluationTaskId: "ET20230009", billOfLading: "BL891234567", containerNumber: "COSU6789012", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 10, evaluationTaskId: "ET20230010", billOfLading: "BL789123456", containerNumber: "EVEU7890123", evaluationStatus: "Pending Review", taskStatus: "In Progress" },
+    { id: 11, evaluationTaskId: "ET20230011", billOfLading: "BL123456780", containerNumber: "HMMU8901234", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 12, evaluationTaskId: "ET20230012", billOfLading: "BL234567809", containerNumber: "YMLU9012345", evaluationStatus: "Rejected", taskStatus: "Pending" },
+    { id: 13, evaluationTaskId: "ET20230013", billOfLading: "BL345678901", containerNumber: "ONEU0123456", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 14, evaluationTaskId: "ET20230014", billOfLading: "BL456789012", containerNumber: "PILU1234506", evaluationStatus: "Pending Review", taskStatus: "In Progress" },
+    { id: 15, evaluationTaskId: "ET20230015", billOfLading: "BL567890123", containerNumber: "WHLU2345607", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 16, evaluationTaskId: "ET20230016", billOfLading: "BL678901234", containerNumber: "KMTC3456708", evaluationStatus: "Rejected", taskStatus: "Pending" },
+    { id: 17, evaluationTaskId: "ET20230017", billOfLading: "BL789012345", containerNumber: "ZIMU4567809", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 18, evaluationTaskId: "ET20230018", billOfLading: "BL890123456", containerNumber: "UACU5678901", evaluationStatus: "Pending Review", taskStatus: "In Progress" },
+    { id: 19, evaluationTaskId: "ET20230019", billOfLading: "BL901234567", containerNumber: "SITC6789012", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 20, evaluationTaskId: "ET20230020", billOfLading: "BL012345678", containerNumber: "IALU7890123", evaluationStatus: "Rejected", taskStatus: "Pending" },
+    { id: 21, evaluationTaskId: "ET20230021", billOfLading: "BL123456789", containerNumber: "ANLU8901234", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 22, evaluationTaskId: "ET20230022", billOfLading: "BL234567890", containerNumber: "CPLU9012345", evaluationStatus: "Pending Review", taskStatus: "In Progress" },
+    { id: 23, evaluationTaskId: "ET20230023", billOfLading: "BL345678901", containerNumber: "EMCU0123456", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 24, evaluationTaskId: "ET20230024", billOfLading: "BL456789012", containerNumber: "GOLD1234567", evaluationStatus: "Rejected", taskStatus: "Pending" },
+    { id: 25, evaluationTaskId: "ET20230025", billOfLading: "BL567890123", containerNumber: "HLCU2345678", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 26, evaluationTaskId: "ET20230026", billOfLading: "BL678901234", containerNumber: "KMTU3456789", evaluationStatus: "Pending Review", taskStatus: "In Progress" },
+    { id: 27, evaluationTaskId: "ET20230027", billOfLading: "BL789012345", containerNumber: "MOLU4567890", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 28, evaluationTaskId: "ET20230028", billOfLading: "BL890123456", containerNumber: "NYKU5678901", evaluationStatus: "Rejected", taskStatus: "Pending" },
+    { id: 29, evaluationTaskId: "ET20230029", billOfLading: "BL901234567", containerNumber: "OOCU6789012", evaluationStatus: "Approved", taskStatus: "Completed" },
+    { id: 30, evaluationTaskId: "ET20230030", billOfLading: "BL012345678", containerNumber: "PILU7890123", evaluationStatus: "Pending Review", taskStatus: "In Progress" }
   ];
 
   const modalData = [
@@ -114,18 +62,13 @@ export default function EvaluationTaskList() {
   const openModal2 = () => setIsModalOpen2(true);
   const closeModal2 = () => setIsModalOpen2(false);
 
-  const [actionMenu, setActionMenu] = useState(null);
-  const toggleActionMenu = (id) => {
-    setActionMenu(actionMenu === id ? null : id);
-  };
-
   return (
     <Layout>
       <div className='p-6 border-1 border-gray-200 h-full bg-white rounded-2xl shadow-xl'>
         <div className='h-fit flex flex-col justify-between'>
           <h1 className="text-xl font-semibold border-l-sky-500 border-l-8 pl-2.5">Evaluation Task List</h1>
           <div className='flex items-end flex-col'>
-            <button onClick={openModal} className='bg-gray-100 hover:bg-gray-200 rounded-sm p-2 px-4 text-sm cursor-pointer w-fit flex items-center justify-center gap-2'>
+            <button onClick={openModal} className='bg-gray-100 hover:bg-gray-200 border-2 border-gray-300 rounded-sm p-2 px-4 text-sm cursor-pointer w-fit flex items-center justify-center gap-2'>
               <h1>Filter</h1><TiFilter />
             </button>
             <div className='flex gap-0.5 my-2'>
@@ -172,52 +115,42 @@ export default function EvaluationTaskList() {
           <table className="min-w-full border-collapse border border-gray-200">
             <thead>
               <tr className="bg-gray-100 border-b border-gray-200">
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-800">Evaluation Task ID</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-800">Bill of Lading</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-800">Container Number</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-800">Evaluation Status</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-800">Task Status</th>
-                <th className="px-4 py-2 text-left text-sm font-semibold text-gray-800">Action</th>
+                <th className="px-4 py-2 text-center text-sm font-semibold text-gray-800">Evaluation Task ID</th>
+                <th className="px-4 py-2 text-center text-sm font-semibold text-gray-800">Bill of Lading</th>
+                <th className="px-4 py-2 text-center text-sm font-semibold text-gray-800">Container Number</th>
+                <th className="px-4 py-2 text-center text-sm font-semibold text-gray-800">Evaluation Status</th>
+                <th className="px-4 py-2 text-center text-sm font-semibold text-gray-800">Task Status</th>
+                <th className="px-4 py-2 text-center text-sm font-semibold text-gray-800">Action</th>
               </tr>
             </thead>
             <tbody>
               {dummyData.map((item) => (
                 <tr key={item.id} className="hover:bg-gray-50 even:bg-gray-50">
-                  <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200">{item.evaluationTaskId}</td>
-                  <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200">{item.billOfLading}</td>
-                  <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200">{item.containerNumber}</td>
-                  <td className={`px-4 py-2 text-sm border-t border-gray-200 ${
+                  <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200 text-center">{item.evaluationTaskId}</td>
+                  <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200 text-center">{item.billOfLading}</td>
+                  <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200 text-center">{item.containerNumber}</td>
+                  <td className={`px-4 py-2 text-sm border-t border-gray-200 text-center ${
                     item.evaluationStatus === "Approved" ? "text-green-600" : 
                     item.evaluationStatus === "Rejected" ? "text-red-600" : "text-yellow-600"
                   }`}>
                     {item.evaluationStatus}
                   </td>
-                  <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200">{item.taskStatus}</td>
-                  <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200 relative">
-                    <button
-                      className="p-1 rounded-full hover:bg-gray-200"
-                      onClick={() => toggleActionMenu(item.id)}
-                    >
-                      <MdMoreVert />
-                    </button>
-                    {actionMenu === item.id && (
-                      <div className="absolute right-0 mt-2 w-40 bg-white rounded-md shadow-lg z-10 border border-gray-200">
-                        <div className="py-1">
-                          <button 
-                            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left"
-                            onClick={openModal2}
-                          >
-                            <FiEye className="mr-2" /> View
-                          </button>
-                          <button className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-                            <FiEdit className="mr-2" /> Edit
-                          </button>
-                          <button className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 w-full text-left">
-                            <FaCheck className="mr-2" /> Completed
-                          </button>
-                        </div>
-                      </div>
-                    )}
+                  <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200 text-center">{item.taskStatus}</td>
+                  <td className="px-4 py-2 text-sm text-gray-700 border-t border-gray-200 text-center">
+                    <div className="flex gap-2 justify-center">
+                      <button className="p-1 rounded-full hover:bg-gray-200 text-blue-500 cursor-pointer">
+                        <FiEdit />
+                      </button>
+                      <button className="p-1 rounded-full hover:bg-gray-200 text-blue-500 cursor-pointer">
+                        <FaCheck />
+                      </button>
+                      <button 
+                        className="p-1 rounded-full hover:bg-gray-200 text-blue-500 cursor-pointer"
+                        onClick={openModal2}
+                      >
+                        <FiEye />
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}

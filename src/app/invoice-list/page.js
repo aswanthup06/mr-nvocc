@@ -17,7 +17,15 @@ export default function InvoiceList() {
       surveyorYardName: "ABC Surveyors Ltd.", 
       motionOfInvoice: "Survey Charges" 
     },
-    // ... other dummy data items
+
+    { 
+      id: 2, 
+      invoiceNo: "INV20230001", 
+      invoiceDate: "2023-10-01", 
+      surveyorYardName: "ABC Surveyors Ltd.", 
+      motionOfInvoice: "Survey Charges" 
+    },
+    
   ];
 
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -50,7 +58,7 @@ export default function InvoiceList() {
       <div className='h-fit flex flex-col justify-between'>
           <h1 className="text-xl font-semibold border-l-sky-500 border-l-8 pl-2.5">Invoice List</h1>
           <div className='flex items-end flex-col'>
-            <button onClick={openModal} className='bg-gray-100 hover:bg-gray-200 rounded-sm p-2 px-4 text-sm cursor-pointer w-fit flex items-center justify-center gap-2'>
+            <button onClick={openModal} className='bg-gray-100 hover:bg-gray-200 border-2 border-gray-300 rounded-sm p-2 px-4 text-sm cursor-pointer w-fit flex items-center justify-center gap-2'>
               <h1>Filter</h1><TiFilter />
             </button>
             <div className='flex gap-0.5 my-2'>
