@@ -109,6 +109,11 @@ export default function ContainerInventoryStockList() {
     { label: "Remarks", id: "remarks", value: "No damage reported" }
   ];
 
+  const [isModalOpen3, setIsModalOpen3] = useState(false);
+  const openModal3 = () => setIsModalOpen3(true);
+  const closeModal3 = () => setIsModalOpen3(false);
+
+
   return (
     <Layout>
       <div className='p-6 border-1 border-gray-200 h-full bg-white rounded-2xl shadow-xl'>
@@ -117,7 +122,7 @@ export default function ContainerInventoryStockList() {
           <div className='flex items-end flex-col'>
 
 <div className='flex gap-2'>
-            <button className='bg-blue-500 hover:bg-blue-600 text-white rounded-sm p-2 px-4 text-sm cursor-pointer w-fit flex items-center justify-center gap-2'>Yard Inventory Upload</button>
+            <button onClick={openModal3} className='bg-blue-500 hover:bg-blue-600 text-white rounded-sm p-2 px-4 text-sm cursor-pointer w-fit flex items-center justify-center gap-2'>Yard Inventory Upload</button>
             <button className='bg-gray-100 hover:bg-gray-200 border-2 border-gray-300 rounded-sm p-2 px-4 text-sm cursor-pointer w-fit flex items-center justify-center gap-2'>Create New <LuPlus /></button>
             <button onClick={openModal} className='bg-gray-100 border-2 border-gray-300 hover:bg-gray-200 rounded-sm p-2 px-4 text-sm cursor-pointer w-fit flex items-center justify-center gap-2'>
               <h1>Filter</h1><TiFilter />
@@ -165,6 +170,28 @@ export default function ContainerInventoryStockList() {
             </div>
           </div>
         </Modal>
+
+        <Modal isOpen={isModalOpen3} onClose={closeModal3}>
+                  <div className='h-full w-full relative'>
+                    <div className='absolute inset-0 flex items-center justify-center'>
+                      <div className='w-fit'>
+                        <div className='flex w-full justify-end mb-4'>
+                          <button onClick={closeModal3} className='bg-white h-10 w-10 rounded-full cursor-pointer flex items-center justify-center'>
+                            <RiArrowGoBackFill />
+                          </button>
+                        </div>
+                        <div className='bg-white p-16 rounded-md flex items-center justify-center flex-col'>
+                          <h1 className="text-xl font-semibold mb-4 text-green-600">Inventory reconciliation completed</h1>
+                          <button className='bg-blue-500 hover:bg-blue-600 text-white rounded-sm p-2 px-4 text-sm cursor-pointer w-fit flex items-center justify-center gap-2'>
+                            <h1>Update the Status</h1>
+                          </button>
+                          <h1 className="text-sm font-medium text-gray-600 mt-6">Mention if any new container added</h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+          </Modal>
+        
 
         {/* Table */}
         <div className="overflow-hidden overflow-y-auto h-auto scroll-smooth scrollbar-thin scrollbar-thumb-blue-500 scrollbar-track-gray-200 custom-scrollbar">
